@@ -17,7 +17,7 @@ env:
   global:
   - VERSION="8.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
   - TRANSIFEX_USER='transbot@odoo-community.org'
-  - secure: QfWoUk6XnvWbjAylKCyZiQDEhIJIJz5AwniN244iabCos6Whm+FmJiCyPEgmLYBuwC23Fd7/ouOSnd3osok0TWve8byIGS8Lvla5ZKNEc4E520tfZyy5xZCZdQ8bA1Gnco9GGRWhIXarb/aWtEgun8HkEibLjIFF7laWtPQ8Suc=
+  - secure: gd9dP/V1LKLWfX4KdomXsaLFMO5wbMSNv3zjZkckgZNn8J+k4ikWSX7WMeiu0vACCdyy7m4LPfpNs7lWSEx/tF9vlYQlVhwmHzuTepy/mFVjfqgwYBfWV058t41Uz0D07bLJ+LttMJv2FHLba15yE0GwhrNRpLOoDPIUUh+DD5RKd1zv9qvh5WffFMY+Y8uAjD2MKaqvCwngJ7VpS7NfOMa12/l0UJZ2lMPQPxYniou6jcz+M0n604aojX97w+fthKL0FA99VLHCyKmMnQku++yCBYeM6v2qg3nrd67RXezAcpGWgeI5wp7iZVg2zTHi1PS1Nvq6WPmVfmBsHyRjarF1zulfuqOL9fQm1+zdXDFgEEjVveivMhEsv9lVtD2ZjNt2hRd7sYr0j1seoTQ7dF3TsA++tCZ2+fFWCnXyzrUhYbMESuKIdTfozBYoslICGQqJlXFs5aMlWEp0YS1z6/SCa135XB6jBlnJjbIEfyZ/dl9N69ulipv1QK0A/QOYbtvmZJxB+wTRUWKDOw+uUPBbqDFv6mN9Zvwg8gZEJmMf/nXPiYfiPZozv+/wTffglDGREfS4dDNqwI85fYA9tatKAOYltPx5XlwVUQ+g3Zb5oKlysOKvlzwwqJwkUppKMIQ6kzaqpmyb4johgf0etbpfZM6mOSlJXJCP1P8ykN0=
   matrix:
   - LINT_CHECK="1"
   - TRANSIFEX="1"

@@ -10,11 +10,6 @@ Odoo modules for Turkey
 
 
 [//]: # (addons)
-Available addons
-----------------
-addon | version | summary
---- | --- | ---
-
 [//]: # (end addons)
 
 Translation Status
