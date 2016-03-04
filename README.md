@@ -9,6 +9,14 @@ Odoo modules for Turkey
 
 Odoo modules for Turkey
 
+### Odoo Türkiye yerelleştirme projemize katkılarınızı bekliyoruz.
+
+* Projemiz OCA içinde barındığı için modüllerin ve içeriğin **OCA kalite standartları**nı sağlaması gerekmekte.
+* [Contribute to OCA](https://odoo-community.org/page/Contribute) sayfasında genel bilgiler mevcut.
+
+* https://github.com/OCA/l10n-turkey adresinden github depomuza ulaşabilir github üzerinden projemize katkıda bulunabilirsiniz.
+* Türkçe çevirilere katkıda bulunmak için https://www.transifex.com/ a üye olabilirsiniz.
+* Bize e-posta ile ulaşmak için turkey@odoo-community.org e-posta listemizi kullanabilirsiniz.
 
 [//]: # (addons)
 [//]: # (end addons)
