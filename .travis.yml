@@ -1,0 +1,38 @@
+language: python
+
+python:
+  - "3.5"
+
+sudo: false
+cache: pip
+
+addons:
+  apt:
+    packages:
+      - expect-dev  # provides unbuffer utility
+      - python-lxml  # because pip installation is slow
+      - python-simplejson
+
+env:
+  global:
+  - VERSION="12.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
+  - TRANSIFEX_USER='transbot@odoo-community.org'
+  - secure: gd9dP/V1LKLWfX4KdomXsaLFMO5wbMSNv3zjZkckgZNn8J+k4ikWSX7WMeiu0vACCdyy7m4LPfpNs7lWSEx/tF9vlYQlVhwmHzuTepy/mFVjfqgwYBfWV058t41Uz0D07bLJ+LttMJv2FHLba15yE0GwhrNRpLOoDPIUUh+DD5RKd1zv9qvh5WffFMY+Y8uAjD2MKaqvCwngJ7VpS7NfOMa12/l0UJZ2lMPQPxYniou6jcz+M0n604aojX97w+fthKL0FA99VLHCyKmMnQku++yCBYeM6v2qg3nrd67RXezAcpGWgeI5wp7iZVg2zTHi1PS1Nvq6WPmVfmBsHyRjarF1zulfuqOL9fQm1+zdXDFgEEjVveivMhEsv9lVtD2ZjNt2hRd7sYr0j1seoTQ7dF3TsA++tCZ2+fFWCnXyzrUhYbMESuKIdTfozBYoslICGQqJlXFs5aMlWEp0YS1z6/SCa135XB6jBlnJjbIEfyZ/dl9N69ulipv1QK0A/QOYbtvmZJxB+wTRUWKDOw+uUPBbqDFv6mN9Zvwg8gZEJmMf/nXPiYfiPZozv+/wTffglDGREfS4dDNqwI85fYA9tatKAOYltPx5XlwVUQ+g3Zb5oKlysOKvlzwwqJwkUppKMIQ6kzaqpmyb4johgf0etbpfZM6mOSlJXJCP1P8ykN0= 
+  matrix:
+  - LINT_CHECK="1"
+  - TRANSIFEX="1"
+  - TESTS="1" ODOO_REPO="OCA/OCB"
+  - TESTS="1" ODOO_REPO="odoo/odoo"
+
+
+install:
+  - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
+  - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
+  - pip install xlrd pycoda unidecode
+  - travis_install_nightly
+
+script:
+  - travis_run_tests
+
+after_success:
+  - travis_after_tests_success
