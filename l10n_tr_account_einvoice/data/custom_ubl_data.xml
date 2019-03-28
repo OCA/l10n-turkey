@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_einvoice" model="ir.sequence">
+            <field name="name">E-Invoice Sequence</field>
+            <field name="code">account.einvoice</field>
+            <field name="prefix">EIN%(range_year)s</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field eval="False" name="company_id"/>
+            <field name="padding">9</field>
+            <field name="implementation">no_gap</field>
+        </record>
+        <record id="sequence_earchive" model="ir.sequence">
+            <field name="name">E-Archive Sequence</field>
+            <field name="code">account.earchive</field>
+            <field name="prefix">EAR%(range_year)s</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field eval="False" name="company_id"/>
+            <field name="padding">9</field>
+            <field name="implementation">no_gap</field>
+        </record>
+    </data>
+</odoo>

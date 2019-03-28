@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_address_district,address.district,model_address_district,,1,1,1,1
+access_address_region,address.region,model_address_region,,1,1,1,1
+access_address_neighbour,address.neighbour,model_address_neighbour,,1,1,1,1

@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.diyalogo.com.tr/sendEArchiveXml" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.diyalogo.com.tr/sendEArchiveXml" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.diyalogo.com.tr/sendEArchiveXml">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="sendXSLT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XsltGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XsltDocument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendXSLTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendXSLTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getValidateGIBUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VKN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getValidateGIBUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getValidateGIBUserResult" type="tns:UserInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PKN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GBN" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getPackReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PackReference" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPackReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPackReportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInvoiceSummaryReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInvoiceSummaryReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInvoiceSummaryReportResult" type="tns:ArrayOfInvoiceSummaryReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInvoiceSummaryReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InvoiceSummaryReport" nillable="true" type="tns:InvoiceSummaryReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InvoiceSummaryReport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IssueDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceTotalWithOutTaxes" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxesTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelInvoiceCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelInvoiceTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelInvoiceTotalWithOutTaxes" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelTaxesTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceCountWithoutCancel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceTotalWithoutCancel" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceTotalWithOutTaxesWithoutCancel" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxesTotalWithoutCancel" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerInvoiceReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vknTckn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerVknTckn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="faturaNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerInvoiceReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerInvoiceReportResult" type="tns:ArrayOfCustomerInvoice" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCustomerInvoice">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CustomerInvoice" nillable="true" type="tns:CustomerInvoice" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomerInvoice">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="eArsivId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceTotalWithOutTaxes" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxesTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowanceTotalAmount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerVknTckn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerPartyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDFUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getInvoiceReportNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="startDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="endDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInvoiceReportNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInvoiceReportNewResult" type="tns:WsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WsResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="tns:ArrayOfInvoiceReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInvoiceReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InvoiceReport" nillable="true" type="tns:InvoiceReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InvoiceReport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Created" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IssueDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ElementId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Uuid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="PacketRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyUnit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InvoiceTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cancel" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getInvoiceReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInvoiceReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInvoiceReportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInvoiceStatusbyInvoiceNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InvoiceNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInvoiceStatusbyInvoiceNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInvoiceStatusbyInvoiceNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInvoiceStatusbyUUID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInvoiceStatusbyUUIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInvoiceStatusbyUUIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEArchiveXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XMLDocument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEArchiveXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendEArchiveXmlResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEArchiveXml2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XMLDocument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEArchiveXml2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendEArchiveXml2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cancelEArchiveInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="uuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="elementId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cancelEArchiveInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cancelEArchiveInvoiceResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="sendXSLTSoapIn">
+    <wsdl:part name="parameters" element="tns:sendXSLT" />
+  </wsdl:message>
+  <wsdl:message name="sendXSLTSoapOut">
+    <wsdl:part name="parameters" element="tns:sendXSLTResponse" />
+  </wsdl:message>
+  <wsdl:message name="getValidateGIBUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getValidateGIBUser" />
+  </wsdl:message>
+  <wsdl:message name="getValidateGIBUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getValidateGIBUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPackReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getPackReport" />
+  </wsdl:message>
+  <wsdl:message name="getPackReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getPackReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceSummaryReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getInvoiceSummaryReport" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceSummaryReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getInvoiceSummaryReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerInvoiceReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerInvoiceReport" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerInvoiceReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerInvoiceReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceReportNewSoapIn">
+    <wsdl:part name="parameters" element="tns:getInvoiceReportNew" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceReportNewSoapOut">
+    <wsdl:part name="parameters" element="tns:getInvoiceReportNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getInvoiceReport" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getInvoiceReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceStatusbyInvoiceNoSoapIn">
+    <wsdl:part name="parameters" element="tns:getInvoiceStatusbyInvoiceNo" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceStatusbyInvoiceNoSoapOut">
+    <wsdl:part name="parameters" element="tns:getInvoiceStatusbyInvoiceNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceStatusbyUUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getInvoiceStatusbyUUID" />
+  </wsdl:message>
+  <wsdl:message name="getInvoiceStatusbyUUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getInvoiceStatusbyUUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendEArchiveXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:sendEArchiveXml" />
+  </wsdl:message>
+  <wsdl:message name="sendEArchiveXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:sendEArchiveXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendEArchiveXml2SoapIn">
+    <wsdl:part name="parameters" element="tns:sendEArchiveXml2" />
+  </wsdl:message>
+  <wsdl:message name="sendEArchiveXml2SoapOut">
+    <wsdl:part name="parameters" element="tns:sendEArchiveXml2Response" />
+  </wsdl:message>
+  <wsdl:message name="cancelEArchiveInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:cancelEArchiveInvoice" />
+  </wsdl:message>
+  <wsdl:message name="cancelEArchiveInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:cancelEArchiveInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="eArchiveSoap">
+    <wsdl:operation name="sendXSLT">
+      <wsdl:input message="tns:sendXSLTSoapIn" />
+      <wsdl:output message="tns:sendXSLTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getValidateGIBUser">
+      <wsdl:input message="tns:getValidateGIBUserSoapIn" />
+      <wsdl:output message="tns:getValidateGIBUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPackReport">
+      <wsdl:input message="tns:getPackReportSoapIn" />
+      <wsdl:output message="tns:getPackReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceSummaryReport">
+      <wsdl:input message="tns:getInvoiceSummaryReportSoapIn" />
+      <wsdl:output message="tns:getInvoiceSummaryReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInvoiceReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Müşteriye kesilen eArşiv faturalarının listesini almak için kullanılır. Zorunlu Alanlar : userId, Password, vknTckn (Faturayı kesen firma), customerVknTckn (Müşteri)</wsdl:documentation>
+      <wsdl:input message="tns:GetCustomerInvoiceReportSoapIn" />
+      <wsdl:output message="tns:GetCustomerInvoiceReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceReportNew">
+      <wsdl:input message="tns:getInvoiceReportNewSoapIn" />
+      <wsdl:output message="tns:getInvoiceReportNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceReport">
+      <wsdl:input message="tns:getInvoiceReportSoapIn" />
+      <wsdl:output message="tns:getInvoiceReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatusbyInvoiceNo">
+      <wsdl:input message="tns:getInvoiceStatusbyInvoiceNoSoapIn" />
+      <wsdl:output message="tns:getInvoiceStatusbyInvoiceNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatusbyUUID">
+      <wsdl:input message="tns:getInvoiceStatusbyUUIDSoapIn" />
+      <wsdl:output message="tns:getInvoiceStatusbyUUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveXml">
+      <wsdl:input message="tns:sendEArchiveXmlSoapIn" />
+      <wsdl:output message="tns:sendEArchiveXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveXml2">
+      <wsdl:input message="tns:sendEArchiveXml2SoapIn" />
+      <wsdl:output message="tns:sendEArchiveXml2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelEArchiveInvoice">
+      <wsdl:input message="tns:cancelEArchiveInvoiceSoapIn" />
+      <wsdl:output message="tns:cancelEArchiveInvoiceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="eArchiveSoap" type="tns:eArchiveSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sendXSLT">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/sendXSLT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getValidateGIBUser">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getValidateGIBUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPackReport">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getPackReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceSummaryReport">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceSummaryReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInvoiceReport">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/GetCustomerInvoiceReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceReportNew">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceReportNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceReport">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatusbyInvoiceNo">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceStatusbyInvoiceNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatusbyUUID">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceStatusbyUUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveXml">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/sendEArchiveXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveXml2">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/sendEArchiveXml2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelEArchiveInvoice">
+      <soap:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/cancelEArchiveInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="eArchiveSoap12" type="tns:eArchiveSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sendXSLT">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/sendXSLT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getValidateGIBUser">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getValidateGIBUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPackReport">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getPackReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceSummaryReport">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceSummaryReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInvoiceReport">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/GetCustomerInvoiceReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceReportNew">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceReportNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceReport">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatusbyInvoiceNo">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceStatusbyInvoiceNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceStatusbyUUID">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/getInvoiceStatusbyUUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveXml">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/sendEArchiveXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEArchiveXml2">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/sendEArchiveXml2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelEArchiveInvoice">
+      <soap12:operation soapAction="http://www.diyalogo.com.tr/sendEArchiveXml/cancelEArchiveInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="eArchive">
+    <wsdl:port name="eArchiveSoap" binding="tns:eArchiveSoap">
+      <soap:address location="https://pb.diyalogo.com.tr/earchive/earchive.asmx" />
+    </wsdl:port>
+    <wsdl:port name="eArchiveSoap12" binding="tns:eArchiveSoap12">
+      <soap12:address location="https://pb.diyalogo.com.tr/earchive/earchive.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

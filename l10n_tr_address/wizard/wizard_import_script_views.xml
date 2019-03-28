@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="wizard_import_script_form_view" model="ir.ui.view">
+            <field name="name">wizard.import.script.form</field>
+            <field name="model">wizard.import.script</field>
+            <field name="arch" type="xml">
+                <form create="0">
+                    <group>
+                        <field name="xls_file" required="1"/>
+                    </group>
+                    <footer>
+                        <button type="object" name="import_excel" string="Import Excel" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+       <record id="action_wizard_import_script_view" model="ir.actions.act_window">
+            <field name="name">Import Address Script</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.import.script</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_wizard_import_script" action="action_wizard_import_script_view"
+                parent="contacts.menu_localisation" sequence="30" string="Location's Import"/>
+
+    </data>
+</openerp>

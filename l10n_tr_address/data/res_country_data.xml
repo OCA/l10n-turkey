@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <delete id="224" model="base.res_country"/>
+        <record id="224" model="base.res_country">
+            <field name="name">Turkey</field>
+            <field name="code">tr</field>
+            <field name="image" type="base64" file="base/static/img/country_flags/tr.png"></field>
+            <field name="address_format" eval="'%(neighbourhood_name)s %(street)s\n%(street2)s %(region_name)s\n %(zip)s %(city)s %(district_name)s %(state_name)s'" />
+            <field name="currency_id" ref="base.TRY"/>
+        </record>
+
+    </data>
+</openerp>

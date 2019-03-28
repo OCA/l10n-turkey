@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+        <record model="ir.ui.view" id="view_provider_form">
+            <field name="name">account.einvoice.provider.form</field>
+            <field name="model">account.einvoice.provider</field>
+            <field name="arch" type="xml">
+                <form string="E-Invoice Providers">
+                    <header>
+                        <button name="action_einvoice_get_invoices" type="object" string="Get Invoices"/>
+                        <button name="action_einvoice_update_invoices" type="object" string="Update Status"/>
+                        <button name="action_einvoice_get_registered_users" type="object" string="Get Users"/>
+                    </header>
+                    <sheet string="E-Invoice Providers">
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                 <field name="company_id"/>
+                            </group>
+                            <group>
+                                <field name="type"/>
+                                <field name="environment"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_provider_tree">
+            <field name="name">account.einvoice.provider.tree</field>
+            <field name="model">account.einvoice.provider</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <tree string="Providers">
+                    <field name="name"/>
+                    <field name="type"/>
+                   
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_provider_search">
+            <field name="name">account.einvoice.provider.search</field>
+            <field name="model">account.einvoice.provider</field>
+            <field name="arch" type="xml">
+                <search string="Providers">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_provider">
+            <field name="name">E-Invoice Providers</field>
+            <field name="res_model">account.einvoice.provider</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_provider_search"/>
+            <field name="view_id" ref="view_provider_tree"/>
+        </record>
+
+        <menuitem
+            action="action_provider"
+            id="menu_finance_einvoice_provider"
+            sequence="50"
+            parent="account_billing_point.menu_finance_billing"/>
+
+  </data>
+</odoo>

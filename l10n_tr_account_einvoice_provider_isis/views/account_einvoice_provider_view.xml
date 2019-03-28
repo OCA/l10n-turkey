@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_billing_point_form">
+            <field name="name">account.einvoice.provider.form</field>
+            <field name="model">account.einvoice.provider</field>
+            <field name="inherit_id" ref="l10n_tr_account_einvoice.view_provider_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='type']" position="after">
+                    	<field name="type" invisible="1"/>
+                        <field name="isis_username" attrs="{'required':[('type','=','isis')],'invisible':[('type','!=','isis')]}"/>
+                        <field name="isis_password" attrs="{'required':[('type','=','isis')],'invisible':[('type','!=','isis')]}"/>
+                        <field name="isis_customer_number" attrs="{'required':[('type','=','isis')],'invisible':[('type','!=','isis')]}"/>
+                         <field name="environment"/>
+                         <field name="auto_registered_user_update"/>
+                         <field name="auto_invoice_retrieval"/>
+                         <field name="auto_invoice_status_update"/>
+                         <field name="import_incoming_invoice_lines"/>
+                         <field name="force_incoming_invoice_check"/>
+                         <field name="registered_users_last_updated"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

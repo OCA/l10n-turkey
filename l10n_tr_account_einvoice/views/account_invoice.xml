@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  © 2016-2017 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+
+<odoo>
+    <record id="invoice_form_einvoice_supplier" model="ir.ui.view">
+        <field name="name">custom_ubl.supplier.invoice.form.einvoice</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_invoice']" position="after">
+                <field name="digital_invoice_type"
+                       attrs="{'invisible' : [('state','not in', ['paid','open'])] ,'readonly' : True}"/>
+                <field name="send_status"
+                       attrs="{'invisible' : [('state','not in', ['open', 'paid'])],'readonly' : True}"/>
+                <field name="invoice_status_text"
+                       attrs="{'invisible' : [('state','not in', ['open', 'paid'])],'readonly' : True}"/>
+                <field name="e_invoicetype"
+                       attrs="{'invisible' : [('state','not in', ['open', 'paid'])] ,'readonly' : True}"/>
+
+            </xpath>
+<!--             <xpath expr="//button[@name='action_invoice_cancel']" position="before"> -->
+<!--                  <button type="object" name="send" -->
+<!--                         string="Send E-Invoice" -->
+<!--                         attrs="{'invisible' : ['|',  ('send_status', '=', 'sent'), '|', ('state', 'not in', ['open','paid']), ('digital_invoice_type', '!=', 'e_invoice')]}"/> -->
+<!--                 <button type="object" name="send" -->
+<!--                         string="Send E-Archive" -->
+<!--                         attrs="{'invisible' : ['|', '|',('send_status', '=', 'sent'), ('state', 'not in', ['open','paid']), ('digital_invoice_type', '!=', 'e_archive')]}"/> -->
+<!--                 <button type="object" name="update_status" -->
+<!--                         string="Update Status" -->
+<!--                         attrs="{'invisible' : ['|',('send_status', '=', 'sent'), ('state', 'not in', ['open','paid'])]}"/> -->
+<!--                 <button type="object" name="get_document_data" -->
+<!--                         string="Download PDF" attrs="{'invisible' : [('send_status','not in', 'sent')]}"/> -->
+<!--             </xpath> -->
+        </field>
+    </record>
+    
+    <record id="invoice_form_einvoice" model="ir.ui.view">
+        <field name="name">custom_ubl.customer.invoice.form.einvoice</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_invoice']" position="after">
+                <field name="einvoice_xml_id" groups="base.group_no_one"/>
+                <field name="einvoice_pdf_id" groups="base.group_no_one"/>
+                <field name="digital_invoice_type"
+                       attrs="{'invisible' : [('state','not in', ['paid','open'])] ,'readonly' : True}"/>
+                <field name="send_status"
+                       attrs="{'invisible' : [('state','not in', ['open', 'paid'])],'readonly' : True}"/>
+                <field name="invoice_status_text"
+                       attrs="{'invisible' : [('state','not in', ['open', 'paid'])],'readonly' : True}"/>
+                <field name="e_invoicetype"
+                       attrs="{'invisible' : [('state','not in', ['open', 'paid'])] ,'readonly' : True}"/>
+
+            </xpath>
+            <xpath expr="//button[@name='action_invoice_cancel']" position="before">
+                <button type="object" name="send"
+                        string="Send E-Invoice"
+                        attrs="{'invisible' : ['|',  ('send_status', '=', 'sent'), '|', ('state', 'not in', ['open','paid']), ('digital_invoice_type', '!=', 'e_invoice')]}"/>
+                <button type="object" name="send"
+                        string="Send E-Archive"
+                        attrs="{'invisible' : ['|', '|',('send_status', '=', 'sent'), ('state', 'not in', ['open','paid']), ('digital_invoice_type', '!=', 'e_archive')]}"/>
+                <button type="object" name="update_status"
+                        string="Update Status"
+                        attrs="{'invisible' : ['|',('send_status', '=', 'sent'), ('state', 'not in', ['open','paid'])]}"/>
+                <button type="object" name="invoice_print"
+                        string="Download PDF"/> 
+            </xpath>
+<!--             <button name="invoice_print" type="object" -->
+<!--                     attrs="{'invisible':['|',('sent','=',True), ('state', '!=', 'open')]}" class="oe_highlight" -->
+<!--                     groups="base.group_user" position="attributes"> -->
+<!--                     <attribute name="attrs">{'invisible':['|', ('sent','=',False), ('state', '!=', 'open')]}</attribute> -->
+<!--             </button> -->
+
+<!--             <button name="action_invoice_sent" type="object" -->
+<!--                     attrs="{'invisible':['|',('sent','=',True), ('state', '!=', 'open')]}" class="oe_highlight" -->
+<!--                     groups="base.group_user" position="replace"> -->
+				
+                <xpath expr="//header" position="inside">
+                <button name="action_invoice_sent" type="object" string="Send by Email"
+                        attrs="{'invisible':['|', ('sent','=',True), ('state', '!=', 'open')]}"
+                        class="oe_highlight"
+                        groups="base.group_user"/>
+                  </xpath>
+<!--             </button> -->
+
+            <button name="action_invoice_draft" states="cancel" type="object"
+                    groups="account.group_account_invoice" position="replace">
+                <button name="action_invoice_draft"
+                        attrs="{'invisible' : [('state', 'not in', 'cancel')]}"
+                        string="Reset to Draft" type="object"
+                        groups="account.group_account_invoice"/>
+            </button>
+			<xpath expr="//notebook" position="inside">
+					<page string="E-Invoice" >
+						<group>
+							<group>
+<!-- 								<field name="einvoice_sender_id" attrs="{'required':[('is_einvoice','!=',False)]}" -->
+<!-- 									options="{'no_open': True,'no_create': 1, 'no_create_edit': 1}" /> -->
+								
+<!-- 								<field name="einvoice_postbox_id" -->
+<!-- 									attrs="{'required':[('is_einvoice','!=',False),('einvoice_profile','not in',['EARSIVFATURA','IHRACAT'])],'invisible':['|',('is_einvoice','=',False),('einvoice_profile','in',['EARSIVFATURA','IHRACAT'])]}" -->
+<!-- 									options="{'no_open': True,'no_create': 1, 'no_creaete_edit': 1}" /> -->
+								<field name="gtb_ref_no" attrs="{'readonly': True,'invisible':[('digital_invoice_type','!=','IHRACAT')]}"></field>
+								<field name="gtb_ref_no_date" attrs="{'readonly': True,'invisible':[('digital_invoice_type','!=','IHRACAT')]}"></field>
+								<field name="gtb_declaration_no" attrs="{'readonly': True,'invisible':[('digital_invoice_type','!=','IHRACAT')]}"></field>
+								<field name="gtb_intac_date" attrs="{'readonly': True,'invisible':[('digital_invoice_type','!=','IHRACAT')]}"></field>
+							</group>
+						</group>
+					</page>
+					</xpath>
+
+        </field>
+    </record>
+
+    <record id="invoice_form" model="ir.ui.view">
+        <field name="name">account_invoice_ubl.customer.invoice.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account_invoice_ubl.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='attach_ubl_xml_file_button']" position="replace">
+
+                <button type="object" name="attach_ubl_xml_file_button"
+                        string="Generate UBL XML File" invisible="0"/>
+
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

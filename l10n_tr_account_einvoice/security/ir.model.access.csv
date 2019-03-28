@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_einvoice_provider,access_einvoice_provider,model_account_einvoice_provider,base.group_user,1,0,0,0
+access_res_partner_einvoice_postbox,res.partner.einvoice.postbox,model_res_partner_einvoice_postbox,base.group_user,1,0,0,0
+access_account_einvoice_registered_user,account.einvoice.registered.user,model_account_einvoice_registered_user,base.group_user,1,1,1,0

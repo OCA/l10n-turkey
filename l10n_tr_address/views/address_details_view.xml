@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_address_district_tree" model="ir.ui.view">
+            <field name="name">view.address.region.tree</field>
+            <field name="model">address.district</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="state_id" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_address_district_form" model="ir.ui.view">
+            <field name="name">view.address.district.form</field>
+            <field name="model">address.district</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="name" required="1"/>
+                            <field name="state_id" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_address_region_tree" model="ir.ui.view">
+            <field name="name">view.address.region.tree</field>
+            <field name="model">address.region</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="district_id"/>
+                    <field name="state_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_address_region_form" model="ir.ui.view">
+            <field name="name">view.address.region.form</field>
+            <field name="model">address.region</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="name" required="1"/>
+                            <field name="district_id" required="1"/>
+                            <field name="state_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_address_neighbour_tree" model="ir.ui.view">
+            <field name="name">view.address.neighbour.tree</field>
+            <field name="model">address.neighbour</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code" />
+                    <field name="region_id" />
+                    <field name="district_id"/>
+                    <field name="state_id"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="view_address_neighbour_form" model="ir.ui.view">
+            <field name="name">view.address.neighbour.form</field>
+            <field name="model">address.neighbour</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="name" required="1"/>
+                            <field name="region_id" required="1"/>
+                            <field name="district_id"/>
+                            <field name="state_id"/>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_district" model="ir.actions.act_window">
+            <field name="name">Districts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">address.district</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a District in your Districts list.
+              </p>
+            </field>
+        </record>
+        <menuitem id="district_menu" action="action_district" parent="contacts.menu_localisation" sequence="5"/>
+
+        <record id="action_region" model="ir.actions.act_window">
+            <field name="name">Regions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">address.region</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a Region in your Regions list.
+              </p>
+            </field>
+        </record>
+        <menuitem id="region_menu" action="action_region" parent="contacts.menu_localisation" sequence="6"/>
+
+        <record id="action_neighbour" model="ir.actions.act_window">
+            <field name="name">Neighbours</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">address.neighbour</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a Neighbourhoud in your Neighbourhoud list.
+              </p>
+            </field>
+        </record>
+        <menuitem id="neighbour_menu" action="action_neighbour" parent="contacts.menu_localisation" sequence="7"/>
+
+   </data>
+</openerp>
+
+
+
+
+

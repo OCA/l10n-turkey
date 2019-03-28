@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="company_form_ubl" model="ir.ui.view">
+        <field name="name">custom_ubl.company.form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="sequence">0</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="mersis"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="einvoice_registered"/>
+                <field name="einvoice_provider_id" attrs="{'invisible':[('einvoice_registered','=',False)]}"/>
+            	<field name="einvoice_sender_email" attrs="{'invisible':[('einvoice_registered','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="respartner_form_ubl" model="ir.ui.view">
+        <field name="name">custom_ubl.respartner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//group[@name='accounting_entries']" position="after">
+                <group string="E-Invoice" name="einvoice">
+                	<field name="einvoice_registered"/>
+                	<field name="default_einvoice_postbox_id" attrs="{'invisible':[('einvoice_registered','=',False)]}"/>
+                	<field name="einvoice_postbox_ids" attrs="{'invisible':[('einvoice_registered','=',False)]}">
+                		<tree>
+                			<field name="name"/>
+                		</tree>
+                	</field>
+                	<field name="mersis" groups="base.group_no_one"/>
+                </group>
+            </xpath>
+            
+            
+        </field>
+    </record>
+</odoo>

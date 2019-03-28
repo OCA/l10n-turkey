@@ -1,0 +1,76 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* l10n_tr_account_einvoice_provider_isis
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-31 10:13+0000\n"
+"PO-Revision-Date: 2017-12-31 10:13+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: field:account.einvoice.provider,isis_customer_number:0
+msgid "Customer Number"
+msgstr ""
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: model:ir.model,name:l10n_tr_account_einvoice_provider_isis.model_account_einvoice_provider
+msgid "E-Invoice Provider"
+msgstr ""
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:83
+#, python-format
+msgid "E-Invoice Provider Error!"
+msgstr ""
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:113
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:152
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:171
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:215
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:246
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:279
+#, python-format
+msgid "E-Invoice Provider WebService Error!"
+msgstr ""
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:109
+#, python-format
+msgid "E-Invoice sent"
+msgstr ""
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:57
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:83
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:113
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:152
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:171
+#, python-format
+msgid "Error!"
+msgstr ""
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: field:account.einvoice.provider,isis_password:0
+msgid "Password"
+msgstr ""
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: code:addons/l10n_tr_account_einvoice_provider_isis/models/account_einvoice_provider.py:57
+#, python-format
+msgid "Please set company vat number!"
+msgstr ""
+
+#. module: l10n_tr_account_einvoice_provider_isis
+#: field:account.einvoice.provider,isis_username:0
+msgid "Username"
+msgstr ""
+

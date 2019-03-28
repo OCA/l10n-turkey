@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    		<record id="view_partner_form_neigbourhood" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+ 			<field name="priority" eval="25"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//sheet//div[hasclass('o_address_format')]" position="replace">
+                    <div class="o_address_format">
+                    	<field name="neighbour_id" placeholder="Neighbour" class="oe_no_button" options="{'no_open': True}" context="{'region_id': region_id,'state_id': state_id}"/>
+                    	 <div attrs="{'invisible': ['|', ('parent_id', '=', False), ('type', '!=', 'contact')]}" class="oe_edit_only"><b>Company Address:</b></div>
+                                <field name="street" placeholder="Street..." class="o_address_street"
+                                    attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"
+                                    attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                         <field name="region_id" placeholder="Region" nolabel="1" options="{'no_open': True}" style="width:120px;" class="oe_no_button"  context="{'district_id': district_id}"/>
+                        <field name="district_id" placeholder="District" nolabel="1" options="{'no_open': True}" style="width:130px;" class="oe_no_button" context="{'state_id': state_id}"/>
+                        <field name="zip" placeholder="ZIP" style="width:100px;" />
+                        <field name="city" placeholder="City" string="City" style="width:150px;" invisible="1"/>
+                       <field name="state_id" class="oe_no_button" placeholder="State" style="width: 120px;" options="{'no_open': True}" />
+                        <field name="country_id" placeholder="Country" style="width: 130px;" class="oe_no_button" options="{'no_open': True, 'no_create': True}"/>
+                    </div>
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page[1]/field/form/sheet/group//div[hasclass('o_address_format')]//field[@name='city']" position="after">
+                    <field name="district_id" placeholder="District" context="{'state_id': state_id}"/>
+                    <field name="region_id" placeholder="Region"  context="{'district_id': district_id}"/>
+                    <field name="neighbour_id" placeholder="Neighbour"  context="{'region_id': region_id,'state_id': state_id,'district_id': district_id}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
